@@ -2,10 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { IoMdArrowDropup } from "react-icons/io";
 import { Link, NavLink } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom'
 import { LuMenu } from "react-icons/lu";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { signInSuccess } from '../redux/user/userSlice';
 
 const Layout = ({children}) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const {currentUser} = useSelector(state => state.user)
   const [isOpen, setIsOpen] = useState(true);
   const [mobileBar, setMobileBar] = useState(false);
@@ -63,6 +67,25 @@ const Layout = ({children}) => {
 
   const Handler = () => {
     setProfile(!profile)
+  }
+
+  const handlesSignout = async () => {
+    try{
+      const res = await fetch('/api/user/signout', {
+        method: 'POST',
+      });
+
+      const data = await res.json();
+      if(!res.ok){
+        console.log(data.message);
+      }else{
+        dispatch(signInSuccess());
+        navigate('/');
+      }
+
+    }catch(error){
+      console.log(error.message)
+    }
   }
   
   const subhover = 'flex justify-start items-center mt-[.5rem] gap-4 p-2 dark:hover:bg-[#0314AA] rounded-md hover:bg-gray-100 hover:bg-opacity-[.12] px-5';
@@ -339,7 +362,7 @@ const Layout = ({children}) => {
                   <div className='flex flex-col justify-center items-start border-b-[.01px] px-4 dark:border-b-gray-800 cursor-pointer py-1 '>
                     <h1 className='text-[15px] font-semibold hover:bg-gray-200 w-full  rounded-[8px] py-1 px-2 dark:hover:bg-slate-600'>Preferences</h1>
                   </div>
-                  <div className='flex flex-col justify-center items-start border-b-[.01px] px-4 dark:border-b-gray-800 cursor-pointer py-1 rounded-b-lg'>
+                  <div className='flex flex-col justify-center items-start border-b-[.01px] px-4 dark:border-b-gray-800 cursor-pointer py-1 rounded-b-lg' onClick={handlesSignout}>
                     <h1 className='text-[15px] font-semibold hover:bg-gray-200 w-full  rounded-[8px] py-1 px-2 dark:hover:bg-slate-600 '>Log out</h1>
                   </div>
                 </div>
@@ -617,7 +640,7 @@ const Layout = ({children}) => {
                       <div className='flex flex-col justify-center items-start border-b-[.01px] px-4 dark:border-b-gray-800 cursor-pointer py-1 '>
                         <h1 className='text-[15px] font-semibold hover:bg-gray-200 w-full  rounded-[8px] py-1 px-2 dark:hover:bg-slate-600'>Preferences</h1>
                       </div>
-                      <div className='flex flex-col justify-center items-start border-b-[.01px] px-4 dark:border-b-gray-800 cursor-pointer py-1 rounded-b-lg'>
+                      <div className='flex flex-col justify-center items-start border-b-[.01px] px-4 dark:border-b-gray-800 cursor-pointer py-1 rounded-b-lg' onClick={handlesSignout}>
                         <h1 className='text-[15px] font-semibold hover:bg-gray-200 w-full  rounded-[8px] py-1 px-2 dark:hover:bg-slate-600 '>Log out</h1>
                       </div>
                     </div>

@@ -69,12 +69,12 @@ const Login = () => {
         <form className="mt-5 mb-8" onSubmit={handleSubmit}>
           <div className="flex p-2 border focus-within:border-[#d2d6db] shadow-inner text-[#363a42] placeholder-[#363a42]  rounded-md gap-3 w-full pl-4 relative custom-inner-shadow focus-within:bg-[#e8f0fd]placeholder-transparent mb-4">
               <img src="/images/person.svg" alt="person"/>
-              <input type="text" placeholder="Username" className=" outline-none w-[85%] p-[4px] placeholder-transparent" id="username" onChange={handleChange} defaultValue={currentUser.username}/>
+              <input type="text" placeholder="username" className=" outline-none w-[85%] p-[4px] placeholder-transparent" id="username" onChange={handleChange}/>
           </div>
 
           <div className="flex p-2 border focus-within:border-[#d2d6db] shadow-inner text-[#363a42] placeholder-[#363a42]  rounded-md gap-3 w-full pl-4 relative custom-inner-shadow focus-within:bg-[#e8f0fd]">
             <img src="/images/key.svg" alt="key"/>
-            <input type={showPassword ? "text" : "password"}  placeholder="Password"  className="outline-none w-[85%] p-[4px] focus-within:bg-[#e8f0fd] placeholder-transparent" id="password" onChange={handleChange} />
+            <input type={showPassword ? "text" : "password"}  placeholder="password"  className="outline-none w-[85%] p-[4px] focus-within:bg-[#e8f0fd] placeholder-transparent" id="password" onChange={handleChange} />
                 {
                   showPassword ? (
                     <IoEye className="absolute top-2 right-0 text-[#98A2B1] w-[33px] h-[33px] cursor-pointer hover:bg-slate-200 rounded-[50%] p-2" onClick={Handler}/>

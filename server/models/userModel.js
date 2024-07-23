@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   },
   middlename: {
     type: String,
-    required: true,
+    
   },
   lastname: {
     type: String,
@@ -27,9 +27,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-}, {timestamps: true}
+  role: {
+    type: String,
+    enum: ['admin', 'teacher', 'student'],
+    
+  },
+  enrolledCourses: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Course'
+  }],
+}, { timestamps: true });
 
-);
-
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model('User', userSchema);
 export default User;
