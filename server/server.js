@@ -13,7 +13,15 @@ const app = express();
 dotenv.config();
 mongoDb();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(
+  app.use(cors(
+    {
+        origin: ["https://sms-bestlink-college-of-the-philippines.vercel.app", "https://lms-bestlink-college-of-the-philippines.vercel.app"],
+        methods: ['POST', 'GET'],
+        credentials: true
+    }
+));
+));
 app.use(cookieParser()); // Use cookie-parser middleware
 
 const PORT = process.env.PORT || 1000
