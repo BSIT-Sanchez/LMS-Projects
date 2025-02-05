@@ -382,7 +382,7 @@ const Layout = ({children}) => {
         </div>
 
         {/**Mobile Header */}
-        <div className='lg:hidden flex justify-between items-center bg-[#fff] p-2 w-[96%] mx-[2%] rounded-[7px] mt-2 fixed box-shadow '>
+        <div className='lg:hidden flex justify-between items-center bg-[#fff] p-2 w-[96%] mx-[2%] rounded-[7px] mt-2 fixed box-shadow z-30'>
           <div className=''>
             {
               mobileBar ? <button onClick={MobileSibeBar} className='p-[.60rem] bg-[#e6e8f7] text-[#0314AA] rounded-lg dark:bg-[#1c008b] dark:text-[#fff]'>
@@ -436,8 +436,8 @@ const Layout = ({children}) => {
             }
             {/**Mobile Sidebar */}
             {
-              <div className={`absolute top-[58px] left-0 w-[100%] h-[90vh] bg-[#1c008b] rounded-[7px] ransition-transform duration-300 transform z-40 ${
-                  mobileBar ? 'translate-x-0 ' : '-translate-x-[103%]'
+              <div className={`absolute top-[58px] left-0 w-[100%] h-[90vh] bg-[#1c008b] rounded-[7px] ransition-transform duration-300 transform z-50 ${
+                  mobileBar ? 'translate-x-0' : '-translate-x-[103%] '
               }`}>
                 {/**List menu */}
                 <div className="flex flex-col gap-1">

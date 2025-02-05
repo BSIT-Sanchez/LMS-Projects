@@ -6,8 +6,10 @@ import mongoDb from './config/mongoDb.js';
 import userRoutes from './routes/userRoute.js'
 import authRoutes from './routes/authRoute.js'
 import cookieParser from 'cookie-parser'; // Import cookie-parser
-import announcementRoutes from './routes/announcementRoute.js'
-import path from 'path';
+import announcementRoutes from './routes/announcementRoute.js';
+import subjectRoutes from './routes/subjectRoute.js';
+import quizRoutes from './routes/quizRoute.js';
+
 const app = express();
 
 dotenv.config();
@@ -22,17 +24,15 @@ app.get('/', (req,res) => {
   res.send("server running on port 5000")
 })
 
-const __dirname = path.resolve();
 
-app.use('/api/user', userRoutes)
-app.use('/api/auth', authRoutes)
-app.use('/api/announcement', announcementRoutes )
 
-app.use(express.static(path.join(__dirname, '/SMS/dist')));
+app.use('/api/user', userRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/announcement', announcementRoutes);
+app.use('/api/subjects', subjectRoutes);
+app.use('/api/quizzes', quizRoutes);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'SMS', 'dist', 'index.html'));
-});
+
 
 app.listen(PORT, console.log(`server running on port ${PORT}`));
 

@@ -47,7 +47,7 @@ const Login = () => {
     setShowPassword(!showPassword)
   }
   return(
-    <div className="grid grid-cols-1  md:grid-cols-2 w-full h-screen  items-center ">
+    <div className="grid grid-cols-1 md:grid-cols-2 w-full h-screen  items-center ">
       <div className="bg-[#fff] h-full flex xs:justify-center lg:justify-end items-center ">
         <div className="h-[30rem] lg:w-[28rem] xs:w-full mx-12 lg:mx-0">
           <img src="/images/logo.svg" alt='logo' className="w-[146px] h-[130px]"/>

@@ -53,6 +53,8 @@ const Layout = ({children}) => {
     setIsOpen(!isOpen);
   };
   
+  
+  
   const [theme, setTheme] = useState('light');
   useEffect(() => {
     if(localStorage.getItem('theme') === null){
@@ -143,7 +145,7 @@ const Layout = ({children}) => {
     <div className="fixed bg-bgColor h-screen w-full dark:bg-darkBg ">
       {/**Sidebar */}
       <div
-        className={`hidden lg:block fixed top-0 left-0 h-[100%] bg-[#1E3B8B]  text-white transition-transform duration-300 ease-in-out transform overflow-hidden overflow-y-scroll sidebar  ${
+        className={`hidden lg:block fixed top-0 left-0 h-[100%] bg-[#1E3B8B]  text-white transition-transform duration-300 ease-in-out transform overflow-hidden overflow-y-scroll sidebar ${
           isOpen ? 'translate-x-0  ' : '-translate-x-[103%]'
         } w-[22%]`}
       >
@@ -866,7 +868,7 @@ const Layout = ({children}) => {
       
       
       {/**Main Content */}
-      <div className={`xs:w-[96%] xs:mx-[2%] ${isOpen ? ' lg:w-[78%] lg:ml-[19rem]  h-[100%] custom-scrollbar  ' : ' lg:w-full h-[100%] custom-scrollbar '} overflow-auto`} >
+      <div className={`xs:w-[96%] xs:mx-[2%] ${isOpen ? ' lg:w-[78%] lg:ml-[19rem]  h-[100%] custom-scrollbar ' : 'lg:w-full h-[100%] custom-scrollbar '} overflow-auto`} >
 
         {/**Header */}
 
